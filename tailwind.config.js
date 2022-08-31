@@ -31,7 +31,7 @@ module.exports = {
       white: '#FFFFFF',
     },
     fontFamily: {
-      sans: ['Roboto', 'Baloo 2', 'sans-serif'],
+      sans: ['Roboto', '"Baloo 2"', 'sans-serif'],
       serif: ['Merriweather', 'serif'],
     },
     extend: {
