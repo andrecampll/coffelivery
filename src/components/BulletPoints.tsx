@@ -30,18 +30,16 @@ const POINTS = [
   },
 ]
 
-export const BulletPoints = () => {
-  return (
-    <div className="grid gap-4 sm:grid-cols-2">
-      {POINTS.map((point) => (
-        <div className="flex items-center gap-3" key={point.description}>
-          <div className={`rounded-full ${point.bgColor} w-8 p-2`}>
-            {cloneElement(point.component, iconProps)}
-          </div>
-
-          <span className="text-black-500">{point.description}</span>
+export const BulletPoints = () => (
+  <div className="grid gap-4 sm:grid-cols-2">
+    {POINTS.map((point) => (
+      <div className="flex items-center gap-3" key={point.description}>
+        <div className={`rounded-full ${point.bgColor} w-8 p-2`}>
+          {cloneElement(point.component, iconProps)}
         </div>
-      ))}
-    </div>
-  )
-}
+
+        <span className="text-black-500">{point.description}</span>
+      </div>
+    ))}
+  </div>
+)
