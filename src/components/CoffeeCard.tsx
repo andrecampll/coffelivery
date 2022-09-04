@@ -1,4 +1,5 @@
 import { ShoppingCart } from 'phosphor-react'
+import { AmountButton } from './AmountButton'
 import { ButtonIcon } from './ButtonIcon'
 
 type Props = {
@@ -18,13 +19,15 @@ export const CoffeeCard = ({ name, description, imageUrl, price }: Props) => (
     <p className="text-gray-800 text-center text-sm">{description}</p>
 
     <footer className="w-full flex mt-8 items-center justify-between">
-      <span>$ {price}</span>
+      <span className="text-black-200 text-sm">
+        R$ <strong className="text-2xl">{price}</strong>
+      </span>
 
       <div className="flex items-center gap-2">
-        <div>1</div>
+        <AmountButton />
 
         <ButtonIcon kind="secondary">
-          <ShoppingCart color="#fff" weight="fill" />
+          <ShoppingCart size={20} color="#fff" weight="fill" />
         </ButtonIcon>
       </div>
     </footer>
