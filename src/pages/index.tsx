@@ -1,14 +1,9 @@
 import { ReactNode } from 'react'
 import { PublicLayout } from '../layouts'
-import { Banner, ProductList } from '../components'
+import { HomeTemplate } from '../templates'
 
 export default function Home() {
-  return (
-    <>
-      <Banner />
-      <ProductList />
-    </>
-  )
+  return <HomeTemplate />
 }
 
 Home.getLayout = function getLayout(page: ReactNode) {
