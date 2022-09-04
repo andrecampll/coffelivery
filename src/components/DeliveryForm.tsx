@@ -1,11 +1,12 @@
 import { MapPinLine } from 'phosphor-react'
+import { Input } from './Input'
 
 export const DeliveryForm = () => (
   <div>
     <h1 className="text-lg text-black-500 font-bold mb-4">Finish your order</h1>
 
     <form className="bg-white-300 p-10">
-      <header className="flex gap-2">
+      <header className="flex gap-2 mb-8">
         <MapPinLine color="#C47F17" size={22} />
         <div>
           <h3 className="text-black-500">Delivery Address</h3>
@@ -14,6 +15,8 @@ export const DeliveryForm = () => (
           </span>
         </div>
       </header>
+
+      <Input placeholder="CEP" />
     </form>
   </div>
 )

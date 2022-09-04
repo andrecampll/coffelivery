@@ -6,7 +6,14 @@ type Props = {
 }
 
 export const PublicLayout = ({ children }: Props) => (
-  <div className="mx-auto my-0 max-w-6xl px-3">
+  <div
+    style={{
+      margin: '0 auto',
+      maxWidth: '1120px',
+      padding: '0 12px',
+    }}
+    className="mx-auto my-0 max-w-6xl px-3"
+  >
     <Header />
 
     {children}
