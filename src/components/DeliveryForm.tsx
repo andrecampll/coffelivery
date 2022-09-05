@@ -1,21 +1,23 @@
-import { MapPinLine } from 'phosphor-react'
+import {
+  Bank,
+  CreditCard,
+  CurrencyDollar,
+  MapPinLine,
+  Money,
+} from 'phosphor-react'
+import { Form } from './Form'
 import { Input } from './Input'
+import { PaymentTypeButton } from './PaymentTypeButton'
 
 export const DeliveryForm = () => (
   <div>
     <h1 className="text-lg text-black-500 font-bold mb-4">Finish your order</h1>
 
-    <form className="bg-white-300 p-10 rounded">
-      <header className="flex gap-2 mb-8">
-        <MapPinLine color="#C47F17" size={22} />
-        <div>
-          <h3 className="text-black-500">Delivery Address</h3>
-          <span className="text-black-200">
-            Enter the address where you want to receive your order
-          </span>
-        </div>
-      </header>
-
+    <Form
+      title="Delivery Address"
+      description="Enter the address where you want to receive your order"
+      icon={<MapPinLine color="#C47F17" size={22} />}
+    >
       <Input placeholder="CEP" />
       <Input placeholder="Address" className="w-full mt-4" />
 
@@ -29,6 +31,28 @@ export const DeliveryForm = () => (
         <Input placeholder="City" className="w-full" />
         <Input placeholder="State" className="w-full md:w-1/3" />
       </div>
-    </form>
+    </Form>
+
+    <Form
+      className="mt-3"
+      title="Payment"
+      description="Payment is made on delivery. Choose the way you want to pay"
+      icon={<CurrencyDollar color="#21A756" size={22} />}
+    >
+      <div className="flex flex-col lg:items-center lg:flex-row gap-3">
+        <PaymentTypeButton>
+          <CreditCard color="#21A756" />
+          Credit Card
+        </PaymentTypeButton>
+        <PaymentTypeButton>
+          <Bank color="#21A756" />
+          Debit Card
+        </PaymentTypeButton>
+        <PaymentTypeButton>
+          <Money color="#21A756" />
+          Credit Card
+        </PaymentTypeButton>
+      </div>
+    </Form>
   </div>
 )

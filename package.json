@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@radix-ui/react-radio-group": "^1.0.0",
     "next": "12.2.5",
     "phosphor-react": "^1.4.1",
     "react": "18.2.0",
