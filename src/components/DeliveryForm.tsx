@@ -5,6 +5,7 @@ import {
   MapPinLine,
   Money,
 } from 'phosphor-react'
+import * as RadioGroup from '@radix-ui/react-radio-group'
 import { Form } from './Form'
 import { Input } from './Input'
 import { PaymentTypeButton } from './PaymentTypeButton'
@@ -39,20 +40,22 @@ export const DeliveryForm = () => (
       description="Payment is made on delivery. Choose the way you want to pay"
       icon={<CurrencyDollar color="#21A756" size={22} />}
     >
-      <div className="flex flex-col lg:items-center lg:flex-row gap-3">
-        <PaymentTypeButton>
-          <CreditCard color="#21A756" />
-          Credit Card
-        </PaymentTypeButton>
-        <PaymentTypeButton>
-          <Bank color="#21A756" />
-          Debit Card
-        </PaymentTypeButton>
-        <PaymentTypeButton>
-          <Money color="#21A756" />
-          Credit Card
-        </PaymentTypeButton>
-      </div>
+      <RadioGroup.Root asChild>
+        <div className="flex flex-col lg:items-center lg:flex-row gap-3">
+          <PaymentTypeButton value="credit">
+            <CreditCard color="#21A756" />
+            Credit Card
+          </PaymentTypeButton>
+          <PaymentTypeButton value="debit">
+            <Bank color="#21A756" />
+            Debit Card
+          </PaymentTypeButton>
+          <PaymentTypeButton value="money">
+            <Money color="#21A756" />
+            Money
+          </PaymentTypeButton>
+        </div>
+      </RadioGroup.Root>
     </Form>
   </div>
 )

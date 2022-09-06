@@ -11,3 +11,8 @@
     font-family: Roboto, system-ui, sans-serif;
   }
 }
+
+.custom-radio[data-state='checked'] { 
+  background: #DDEEE4;
+  border: 1px solid #177B3F;
+}

@@ -1,9 +1,9 @@
-import { ReactNode } from 'react'
+import { ButtonHTMLAttributes, ReactNode } from 'react'
 
 type Props = {
   children: ReactNode
   kind?: 'primary' | 'secondary'
-}
+} & ButtonHTMLAttributes<HTMLButtonElement>
 
 export const ButtonIcon = ({ children, kind = 'primary' }: Props) => (
   <button
