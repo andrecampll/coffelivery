@@ -1,8 +1,14 @@
 import { Trash } from 'phosphor-react'
 import { AmountButton } from './AmountButton'
 
-export const CartItem = () => (
-  <div className="flex gap-5 flex-col items-center sm:flex-row sm:items-start">
+type Props = {
+  className?: string
+}
+
+export const CartItem = ({ className }: Props) => (
+  <div
+    className={`flex gap-5 flex-col items-center sm:flex-row sm:items-start lg:justify-between ${className}`}
+  >
     <div className="flex gap-5 flex-col items-center sm:flex-row">
       <img src="/coffee.svg" alt="" className="w-16" />
       <div>
