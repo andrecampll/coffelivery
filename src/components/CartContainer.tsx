@@ -1,4 +1,6 @@
+import { ShoppingCart } from 'phosphor-react'
 import { useCart } from '../hooks'
+import { priceFormatter } from '../utils/formatter'
 import { Button } from './Button'
 import { CartItem } from './CartItem'
 
@@ -11,8 +13,6 @@ export const CartContainer = () => {
     totalPrice,
     deleteProduct,
   } = useCart()
-
-  console.log('products', products)
 
   return (
     <main className="bg-white-300 rounded-tr-4xl rounded-bl-4xl rounded-tl-md rounded-br-md p-10 divide-y divide-gray-200">
@@ -32,7 +32,7 @@ export const CartContainer = () => {
           <footer className="border-t-gray-200 pt-6">
             <div className="flex items-center justify-between mb-3 text-black-200">
               <span>Total items</span>
-              <span>R$ {subtotalPrice.toFixed(2)}</span>
+              <span>{priceFormatter.format(subtotalPrice)}</span>
             </div>
 
             <div className="flex items-center justify-between mb-3 text-black-200">
@@ -42,14 +42,20 @@ export const CartContainer = () => {
 
             <div className="flex items-center justify-between mt-3 mb-6 font-bold text-black-500 text-xl">
               <span>Total</span>
-              <span>R$ {totalPrice.toFixed(2)}</span>
+              <span>{priceFormatter.format(totalPrice)}</span>
             </div>
 
             <Button>Confirm Order</Button>
           </footer>
         </>
       ) : (
-        <p>No products</p>
+        <div className="flex flex-col items-center gap-2">
+          <ShoppingCart size={100} color="#888" />
+
+          <p className="text-black-200">
+            No products. Try to add some coffees to your cart :)
+          </p>
+        </div>
       )}
     </main>
   )

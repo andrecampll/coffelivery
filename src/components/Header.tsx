@@ -5,7 +5,11 @@ import { ButtonIcon } from './ButtonIcon'
 export const Header = () => {
   return (
     <header className="flex w-full items-center py-8 justify-between">
-      <img src="/logo.svg" alt="logo" />
+      <Link href="/">
+        <a>
+          <img src="/logo.svg" alt="logo" />
+        </a>
+      </Link>
 
       <div className="flex items-center gap-4">
         <div className="flex items-center bg-primary-200 p-2 rounded-md gap-1">
