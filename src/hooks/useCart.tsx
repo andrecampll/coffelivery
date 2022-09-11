@@ -4,8 +4,15 @@ import {
   useCallback,
   useContext,
   useMemo,
-  useState,
+  useReducer,
 } from 'react'
+
+import {
+  addProduct,
+  cartReducer,
+  decrementProductAmount,
+  removeProduct,
+} from '../store/cart'
 
 import { Product } from '../types'
 
@@ -26,81 +33,38 @@ type Props = {
 const CartContext = createContext({} as CartContextData)
 
 export const CartProvider = ({ children }: Props) => {
-  const [products, setProducts] = useState<Product[]>([])
+  const [cartState, dispatch] = useReducer(cartReducer, { products: [] })
 
-  const addProductToCart = useCallback(
-    (product: Product) => {
-      const items = [...products]
+  const addProductToCart = useCallback((product: Product) => {
+    dispatch(addProduct(product))
+  }, [])
 
-      const foundProduct = items.find((item) => item.id === product.id)
-
-      if (foundProduct) {
-        const updatedArray = items.map((item) =>
-          item.id === product.id
-            ? {
-                ...item,
-                amount: item.amount + 1,
-              }
-            : item,
-        )
-
-        return setProducts(updatedArray)
-      }
-
-      return setProducts((products) => [...products, product])
-    },
-    [products],
-  )
-
-  const decrementAmount = useCallback(
-    (productId: string) => {
-      const items = [...products]
-
-      const foundProduct = items.find((item) => item.id === productId)
-
-      if (foundProduct && foundProduct.amount > 1) {
-        const updatedArray = items.map((item) =>
-          item.id === productId
-            ? {
-                ...item,
-                amount: item.amount - 1,
-              }
-            : item,
-        )
-
-        return setProducts(updatedArray)
-      }
-
-      setProducts((products) =>
-        products.filter((product) => product.id !== productId),
-      )
-    },
-    [products],
-  )
+  const decrementAmount = useCallback((productId: string) => {
+    dispatch(decrementProductAmount(productId))
+  }, [])
 
   const getProductAmount = useCallback(
     (productId: string) => {
-      const foundProduct = products.find((item) => item.id === productId)
+      const foundProduct = cartState.products.find(
+        (item) => item.id === productId,
+      )
 
       return foundProduct?.amount
     },
-    [products],
+    [cartState.products],
   )
 
   const deleteProduct = useCallback(
-    (productId: string) =>
-      setProducts((products) =>
-        products.filter((product) => product.id !== productId),
-      ),
+    (productId: string) => dispatch(removeProduct(productId)),
     [],
   )
 
   const subtotalPrice = useMemo(
     () =>
-      products.reduce((prev, curr) => {
+      cartState.products.reduce((prev, curr) => {
         return prev + curr.price * curr.amount
       }, 0),
-    [products],
+    [cartState.products],
   )
 
   const totalPrice = useMemo(() => subtotalPrice + 3.7, [subtotalPrice])
@@ -108,7 +72,7 @@ export const CartProvider = ({ children }: Props) => {
   return (
     <CartContext.Provider
       value={{
-        products,
+        products: cartState.products,
         addProductToCart,
         getProductAmount,
         decrementAmount,
