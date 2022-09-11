@@ -1,12 +1,18 @@
 import { Minus, Plus } from 'phosphor-react'
 
-export const AmountButton = () => (
+type Props = {
+  amount?: number
+  onMinusClick: () => void
+  onPlusClick: () => void
+}
+
+export const AmountButton = ({ amount, onMinusClick, onPlusClick }: Props) => (
   <div className="flex items-center px-2 py-1.5 gap-2 bg-gray-200 rounded-md">
-    <div className="cursor-pointer">
+    <div className="cursor-pointer" onClick={onMinusClick}>
       <Minus color="#21A756" />
     </div>
-    <span className="text-md cursor-default select-none">1</span>
-    <div className="cursor-pointer">
+    <span className="text-md cursor-default select-none">{amount || 0}</span>
+    <div className="cursor-pointer" onClick={onPlusClick}>
       <Plus color="#21A756" />
     </div>
   </div>
