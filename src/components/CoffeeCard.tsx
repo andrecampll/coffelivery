@@ -9,7 +9,7 @@ type Props = {
   name: string
   description: string
   imageUrl: string
-  price: string
+  price: number
   category: string | string[]
 }
 
@@ -30,6 +30,12 @@ export const CoffeeCard = ({ ...props }: Props) => {
     () => getProductAmount(props.id),
     [getProductAmount, props.id],
   )
+
+  const handleDecrementAmount = useCallback(() => {
+    if (!amount) return
+
+    decrementAmount(props.id)
+  }, [props.id, decrementAmount, amount])
 
   return (
     <div className="bg-white-300 flex flex-col items-center px-6 py-5 rounded-tr-4xl rounded-bl-4xl rounded-tl-md rounded-br-md max-h-80">
@@ -61,7 +67,7 @@ export const CoffeeCard = ({ ...props }: Props) => {
         <div className="flex items-center gap-2">
           <AmountButton
             amount={amount}
-            onMinusClick={() => decrementAmount(props.id)}
+            onMinusClick={handleDecrementAmount}
             onPlusClick={handleAddProductToCart}
           />
 

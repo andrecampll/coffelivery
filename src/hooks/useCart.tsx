@@ -3,6 +3,7 @@ import {
   ReactNode,
   useCallback,
   useContext,
+  useMemo,
   useState,
 } from 'react'
 
@@ -12,7 +13,10 @@ type CartContextData = {
   products: Product[]
   addProductToCart: (product: Product) => void
   getProductAmount: (productId: string) => number
+  deleteProduct: (productId: string) => void
   decrementAmount: (productId: string) => void
+  subtotalPrice: number
+  totalPrice: number
 }
 
 type Props = {
@@ -83,6 +87,24 @@ export const CartProvider = ({ children }: Props) => {
     [products],
   )
 
+  const deleteProduct = useCallback(
+    (productId: string) =>
+      setProducts((products) =>
+        products.filter((product) => product.id !== productId),
+      ),
+    [],
+  )
+
+  const subtotalPrice = useMemo(
+    () =>
+      products.reduce((prev, curr) => {
+        return prev + curr.price * curr.amount
+      }, 0),
+    [products],
+  )
+
+  const totalPrice = useMemo(() => subtotalPrice + 3.7, [subtotalPrice])
+
   return (
     <CartContext.Provider
       value={{
@@ -90,6 +112,9 @@ export const CartProvider = ({ children }: Props) => {
         addProductToCart,
         getProductAmount,
         decrementAmount,
+        subtotalPrice,
+        totalPrice,
+        deleteProduct,
       }}
     >
       {children}
