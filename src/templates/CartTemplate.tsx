@@ -1,20 +1,28 @@
+import { useCallback } from 'react'
+import { useRouter } from 'next/router'
 import { FormProvider, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
+
 import { DeliveryFormData, deliveryFormSchema } from '../types'
 
 import { Cart, DeliveryForm } from '../components'
-import { useCallback } from 'react'
 
 export const CartTemplate = () => {
+  const { push } = useRouter()
+
   const cartForm = useForm<DeliveryFormData>({
     resolver: zodResolver(deliveryFormSchema),
   })
 
   const { handleSubmit } = cartForm
 
-  const handleSubmitCart = useCallback((data: DeliveryFormData) => {
-    console.log(data)
-  }, [])
+  const handleSubmitCart = useCallback(
+    (data: DeliveryFormData) => {
+      console.log(data)
+      push('/order-confirmed')
+    },
+    [push],
+  )
 
   return (
     <form
