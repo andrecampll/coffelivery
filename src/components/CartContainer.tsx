@@ -45,7 +45,7 @@ export const CartContainer = () => {
               <span>{priceFormatter.format(totalPrice)}</span>
             </div>
 
-            <Button>Confirm Order</Button>
+            <Button type="submit">Confirm Order</Button>
           </footer>
         </>
       ) : (

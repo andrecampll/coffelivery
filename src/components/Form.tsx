@@ -15,7 +15,7 @@ export const Form = ({
   icon,
   className,
 }: Props) => (
-  <form className={`bg-white-300 p-10 rounded ${className}`}>
+  <div className={`bg-white-300 p-10 rounded ${className}`}>
     <header className="flex gap-2 mb-8">
       {icon}
       <div>
@@ -25,5 +25,5 @@ export const Form = ({
     </header>
 
     {children}
-  </form>
+  </div>
 )
