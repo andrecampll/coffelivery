@@ -8,7 +8,10 @@ export const deliveryFormSchema = zod.object({
   district: zod.string().min(1, 'Insert District'),
   city: zod.string().min(1, 'Insert City'),
   state: zod.string().min(1, 'Insert State'),
-  paymentType: zod.string().min(1, 'Select payment type'),
+  paymentType: zod.string({
+    required_error: 'Select payment type',
+    invalid_type_error: 'Select payment type',
+  }),
 })
 
 export type DeliveryFormData = zod.infer<typeof deliveryFormSchema>

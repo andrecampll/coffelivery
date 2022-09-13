@@ -42,6 +42,8 @@ module.exports = {
       'white-300': '#F3F2F2',
       'white-200': '#F2F2F2',
       white: '#FFFFFF',
+      red: '#F75A68',
+      'red-800': '#AA2834',
     },
     fontFamily: {
       sans: ['Roboto', '"Baloo 2"', 'sans-serif'],

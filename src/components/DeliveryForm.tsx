@@ -13,9 +13,7 @@ import { Input } from './Input'
 import { PaymentTypeButton } from './PaymentTypeButton'
 
 export const DeliveryForm = () => {
-  const { register, formState } = useFormContext()
-
-  console.log(formState)
+  const { register, formState, setValue } = useFormContext()
 
   return (
     <div>
@@ -28,10 +26,15 @@ export const DeliveryForm = () => {
         description="Enter the address where you want to receive your order"
         icon={<MapPinLine color="#C47F17" size={22} />}
       >
-        <Input placeholder="CEP" {...register('cep')} />
+        <Input
+          placeholder="CEP"
+          error={formState.errors.cep?.message as string}
+          {...register('cep')}
+        />
         <Input
           placeholder="Address"
           className="w-full mt-4"
+          error={formState.errors.address?.message as string}
           {...register('address')}
         />
 
@@ -40,11 +43,13 @@ export const DeliveryForm = () => {
             placeholder="Number"
             type="number"
             className="w-1/2 md:w-1/3"
+            error={formState.errors.number?.message as string}
             {...register('number')}
           />
           <Input
             placeholder="Complement"
             className="w-full"
+            error={formState.errors.complement?.message as string}
             {...register('complement')}
           />
         </div>
@@ -53,12 +58,14 @@ export const DeliveryForm = () => {
           <Input
             placeholder="District"
             className="w-full md:w-1/2"
+            error={formState.errors.district?.message as string}
             {...register('district')}
           />
           <Input placeholder="City" className="w-full" {...register('city')} />
           <Input
             placeholder="State"
             className="w-full md:w-1/3"
+            error={formState.errors.state?.message as string}
             {...register('state')}
           />
         </div>
@@ -70,21 +77,29 @@ export const DeliveryForm = () => {
         description="Payment is made on delivery. Choose the way you want to pay"
         icon={<CurrencyDollar color="#21A756" size={22} />}
       >
-        <RadioGroup.Root asChild {...register('paymentForm')}>
-          <div className="flex flex-col lg:items-center lg:flex-row gap-3">
-            <PaymentTypeButton value="credit">
-              <CreditCard color="#21A756" />
-              Credit Card
-            </PaymentTypeButton>
-            <PaymentTypeButton value="debit">
-              <Bank color="#21A756" />
-              Debit Card
-            </PaymentTypeButton>
-            <PaymentTypeButton value="money">
-              <Money color="#21A756" />
-              Money
-            </PaymentTypeButton>
-          </div>
+        <RadioGroup.Root
+          asChild
+          onValueChange={(value) => setValue('paymentType', value)}
+        >
+          <>
+            <div className="flex flex-col lg:items-center lg:flex-row gap-3 mb-4">
+              <PaymentTypeButton value="credit">
+                <CreditCard color="#21A756" />
+                Credit Card
+              </PaymentTypeButton>
+              <PaymentTypeButton value="debit">
+                <Bank color="#21A756" />
+                Debit Card
+              </PaymentTypeButton>
+              <PaymentTypeButton value="money">
+                <Money color="#21A756" />
+                Money
+              </PaymentTypeButton>
+            </div>
+            <span className="text-sm text-red-800">
+              {formState.errors.paymentType?.message as string}
+            </span>
+          </>
         </RadioGroup.Root>
       </Form>
     </div>
