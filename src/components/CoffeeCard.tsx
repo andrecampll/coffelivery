@@ -8,9 +8,12 @@ type Props = {
   id: string
   name: string
   description: string
-  imageUrl: string
   price: number
-  category: string | string[]
+  categories: string | string[]
+  image: {
+    id: string
+    url: string
+  }
 }
 
 export const CoffeeCard = ({ ...props }: Props) => {
@@ -39,20 +42,20 @@ export const CoffeeCard = ({ ...props }: Props) => {
 
   return (
     <div className="bg-white-300 flex flex-col items-center px-6 py-5 rounded-tr-4xl rounded-bl-4xl rounded-tl-md rounded-br-md max-h-80">
-      <img src={props.imageUrl} alt="" className="relative bottom-10 -mb-6" />
+      <img src={props.image.url} alt="" className="relative bottom-10 -mb-6" />
       <div className="flex items-center gap-2">
-        {typeof props.category === 'object' ? (
-          props.category.map((item) => (
+        {typeof props.categories === 'object' ? (
+          props.categories.map((item) => (
             <span
               key={item}
               className="mb-4 bg-secondary-200 rounded-full text-secondary-800 px-2 py-1 font-bold uppercase text-xs"
             >
-              {item}
+              {item.replace(/_/g, ' ')}
             </span>
           ))
         ) : (
           <span className="mb-4 bg-secondary-200 rounded-full text-secondary-800 px-2 py-1 font-bold uppercase text-xs">
-            {props.category}
+            {props.categories}
           </span>
         )}
       </div>
