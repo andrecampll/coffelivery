@@ -61,7 +61,12 @@ export const DeliveryForm = () => {
             error={formState.errors.district?.message as string}
             {...register('district')}
           />
-          <Input placeholder="City" className="w-full" {...register('city')} />
+          <Input
+            placeholder="City"
+            className="w-full"
+            error={formState.errors.city?.message as string}
+            {...register('city')}
+          />
           <Input
             placeholder="State"
             className="w-full md:w-1/3"
