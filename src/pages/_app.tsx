@@ -1,18 +1,23 @@
-import { ApolloProvider } from '@apollo/client'
+import { ReactElement, ReactNode } from 'react'
+import { NextPage } from 'next'
+import { AppProps } from 'next/app'
+
 import { CartProvider } from '../hooks'
-import { useApollo } from '../lib/apollo'
+
 import '../styles/globals.css'
 
-function App({ Component, pageProps }) {
-  const client = useApollo(pageProps.initialApolloState)
+export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
+  getLayout?: (page: ReactElement) => ReactNode
+}
 
-  const getLayout = Component.getLayout || ((page) => page)
+type AppPropsWithLayout = AppProps & {
+  Component: NextPageWithLayout
+}
 
-  return (
-    <ApolloProvider client={client}>
-      <CartProvider>{getLayout(<Component {...pageProps} />)}</CartProvider>
-    </ApolloProvider>
-  )
+function App({ Component, pageProps }: AppPropsWithLayout) {
+  const getLayout = Component.getLayout ?? ((page) => page)
+
+  return <CartProvider>{getLayout(<Component {...pageProps} />)}</CartProvider>
 }
 
 export default App
