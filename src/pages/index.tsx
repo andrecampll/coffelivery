@@ -1,14 +1,34 @@
-import { ReactNode } from 'react'
-import { useGetProductsQuery as useProducts } from '../graphql/generated/graphql'
+import { GetServerSideProps } from 'next'
+import {
+  getServerPageGetProducts,
+  ssrGetProducts,
+} from '../graphql/generated/ssr'
+import { withApollo } from '../lib/apollo/withApollo'
+
 import { PublicLayout } from '../layouts'
+
 import { HomeTemplate } from '../templates'
 
-export default function Home() {
-  const { data } = useProducts()
-
-  return <HomeTemplate products={data.products} />
+function Home(props) {
+  return (
+    <PublicLayout>
+      <HomeTemplate products={props?.products} />
+    </PublicLayout>
+  )
 }
 
-Home.getLayout = function getLayout(page: ReactNode) {
-  return <PublicLayout>{page}</PublicLayout>
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const {
+    props: {
+      data: { products },
+    },
+  } = await getServerPageGetProducts({}, ctx)
+
+  return {
+    props: {
+      products,
+    },
+  }
 }
+
+export default withApollo(ssrGetProducts.withPage()(Home))
