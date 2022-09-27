@@ -16,7 +16,7 @@ export const DeliveryForm = () => {
   const { register, formState, setValue } = useFormContext()
 
   return (
-    <div>
+    <div className="lg:w-3/5">
       <h1 className="text-lg text-black-500 font-bold mb-4">
         Finish your order
       </h1>
@@ -57,19 +57,19 @@ export const DeliveryForm = () => {
         <div className="my-4 flex flex-col md:flex-row gap-4">
           <Input
             placeholder="District"
-            className="w-full md:w-1/2"
+            className="w-full md:w-1/3"
             error={formState.errors.district?.message as string}
             {...register('district')}
           />
           <Input
             placeholder="City"
-            className="w-full"
+            className="w-full md:w-1/3"
             error={formState.errors.city?.message as string}
             {...register('city')}
           />
           <Input
             placeholder="State"
-            className="w-full md:w-1/3"
+            className="w-full md:w-1/4"
             error={formState.errors.state?.message as string}
             {...register('state')}
           />

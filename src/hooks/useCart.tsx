@@ -49,7 +49,7 @@ export const CartProvider = ({ children }: Props) => {
         (item) => item.id === productId,
       )
 
-      return foundProduct?.amount
+      return foundProduct?.amount || 0
     },
     [cartState.products],
   )

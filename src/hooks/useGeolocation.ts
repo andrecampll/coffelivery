@@ -43,8 +43,6 @@ export const useGeolocation = () => {
     }
   }, [location])
 
-  console.log(address)
-
   return {
     address,
   }

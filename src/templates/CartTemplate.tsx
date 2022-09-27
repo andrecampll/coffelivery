@@ -18,7 +18,6 @@ export const CartTemplate = () => {
 
   const handleSubmitCart = useCallback(
     (data: DeliveryFormData) => {
-      console.log(data)
       push('/order-confirmed')
     },
     [push],

@@ -12,6 +12,7 @@ import { HomeTemplate } from '../templates'
 function Home(props) {
   return (
     <PublicLayout>
+      <title>Coffelivery</title>
       <HomeTemplate products={props?.products} />
     </PublicLayout>
   )
