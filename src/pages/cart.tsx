@@ -3,7 +3,12 @@ import { PublicLayout } from '../layouts'
 import { CartTemplate } from '../templates'
 
 export default function Cart() {
-  return <CartTemplate />
+  return (
+    <>
+      <title>Coffelivery | Cart</title>
+      <CartTemplate />
+    </>
+  )
 }
 
 Cart.getLayout = function getLayout(page: ReactNode) {

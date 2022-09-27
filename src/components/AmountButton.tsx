@@ -9,7 +9,11 @@ type Props = {
 export const AmountButton = ({ amount, onMinusClick, onPlusClick }: Props) => (
   <div className="flex items-center px-2 py-1.5 gap-2 bg-gray-200 rounded-md">
     <div
-      className={`${amount > 0 && 'cursor-pointer opacity-100'} opacity-50`}
+      className={`${
+        amount === 0
+          ? 'cursor-default opacity-50'
+          : 'cursor-pointer opacity-100'
+      }`}
       onClick={onMinusClick}
     >
       <Minus color="#21A756" />
