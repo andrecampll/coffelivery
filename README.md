@@ -1,34 +1,59 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# CoffeLivery ☕️
 
-## Getting Started
+Coffelivery is your favorite online coffee store made with Next.js, TailwindCSS and Hygraph CMS ⚛️
 
-First, run the development server:
 
+# Proposal 🔥
+
+<p align="center" t>
+  <img src="./.github/homepage.png" />
+</p>
+
+Live demo: https://coffeelivery-prqt7d4xf-andrecampll.vercel.app
+
+This project was made to approach and practice advanced React concepts like reducers, Context API, TailwindCSS, SSR and SSG with Next.js.
+
+Furthermore, there's advanced React Hook that handles the integration with the Nominatim API in order to do the geolocalization feature.
+
+Also, great GraphQL integration with Apollo Client, CodeGen and HygraphCMS to provide all necessary product related data.
+
+# Technologies 🚀
+Next.js ⚛️ <br />
+GraphQL ⚛️ <br />
+Apollo Client⚛️ <br />
+Hygraph ⚡️ <br />
+TailwindCSS 💅 <br />
+Typescript 🦕 <br />
+
+# Getting Started 🤔
 ```bash
-npm run dev
-# or
-yarn dev
+# Create a .env file by following the .env.example file.
+
+# Tip: you can use the same API url in the example.
+
+# Start the project by running `dev` command
+$ yarn dev
+
+# Open your browser on `localhost:3000`
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# How to contribute? 😍
+**Fork this repository**
+```bash
+# Clone your fork
+$ git clone your-fork-url && cd wongames
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+# Create a branch with your feature or bug fix
+$ git checkout -b my-branch
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+# Commit your changes
+$ git commit -m 'my changes'
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+# Push your branch
+$ git push origin my-branch
+```
 
-## Learn More
+Delete your branch, if you want, when your pull request merge. <br />
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Made with 💜 by <a href="https://www.linkedin.com/in/andrecampll/" target="_blank"> andrecampll </a>. <br />
+<br />
