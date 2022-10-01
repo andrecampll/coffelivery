@@ -23,9 +23,11 @@ Live demo: https://coffeelivery-prqt7d4xf-andrecampll.vercel.app
 
 - An awesome integration with React Hook Form that handles the forms state management.
 
-- Great GraphQL integration with Apollo Client to fetch products with GraphQL and CodeGen to automatically generate GraphQL's types.
+- Great GraphQL integration with Apollo Client to fetch products with GraphQL and CodeGen to automatically generate GraphQL's types and query hooks.
 
 - Hygraph connection to provide all necessary product related data.
+
+- Used Vercel to build a quick production-ready version.
 
 # Technologies 🚀
 Next.js ⚛️ <br />
